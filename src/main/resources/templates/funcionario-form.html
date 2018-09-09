@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+
+    <title>Cadastro de funcionários - Atento</title>
+</head>
+<body>
+    <header class="border rounded">
+        <h1 class="text-center ">Atento!</h1>
+    </header>
+    <main class="container">
+        <form action="/funcionarios" method="post" class="border rounded p-5 mt-3">
+            <input type="hidden" name="id" />
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label for="primeiro_nome">Nome:</label>
+                        <input id="primeiro_nome" class="form-control" type="text" name="primeiro_nome" placeholder="Nome"/>
+                    </div>
+                    <div class="col">
+                        <label for="segundo_nome">Sobrenome:</label>
+                        <input id="segundo_nome" class="form-control" type="text" name="segundo_nome" placeholder="Sobrenome" />
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label for="cep">CEP:</label>
+                        <input id="cep" class="form-control" type="text" name="cep" placeholder="CEP"/>
+                    </div>
+                    <div class="col">
+                        <label for="rua">Rua, avenida,...:</label>
+                        <input id="rua" class="form-control" type="text" name="rua" placeholder="Rua, avenida,..."/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="numero">Número:</label>
+                        <input id="numero" class="form-control" type="text" name="numero" placeholder="Número"/>
+                    </div>
+                    <div class="col">
+                        <label for="complemento">Complemento:</label>
+                        <input id="complemento" class="form-control" type="text" name="complemento" placeholder="Complemento"/>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label for="horario_de_trabalho">Horário de trabalho:</label>
+                <input id="horario_de_trabalho" class="form-control" type="time" name="horario_de_trabalho" placeholder="Horário de Trabalho"/>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    </main>
+    <footer class="container mt-5">
+        <p class="text-center text-secondary">2018 Todos os direitos reservados &copy;</p>
+    </footer>
+</body>
+</html>
