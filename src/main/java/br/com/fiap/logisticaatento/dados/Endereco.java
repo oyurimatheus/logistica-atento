@@ -1,4 +1,4 @@
-package br.com.fiap.logisticaatento.modelo;
+package br.com.fiap.logisticaatento.dados;
 
 import javax.persistence.Embeddable;
 
