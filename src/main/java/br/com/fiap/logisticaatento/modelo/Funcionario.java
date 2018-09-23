@@ -1,8 +1,8 @@
 package br.com.fiap.logisticaatento.modelo;
 
 import java.time.LocalTime;
-import br.com.fiap.logisticaatento.modelo.Nome;
-import br.com.fiap.logisticaatento.modelo.Endereco;
+import br.com.fiap.logisticaatento.dados.Nome;
+import br.com.fiap.logisticaatento.dados.Endereco;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ public class Funcionario {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Embedded
     private Nome nome;
