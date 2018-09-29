@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
     <title>Cadastro de funcionários - Atento</title>
 </head>
@@ -15,16 +15,15 @@
     </header>
     <main class="container">
         <form action="/funcionarios" method="post" class="border rounded p-5 mt-3">
-            <input type="hidden" name="id" />
             <fieldset class="form-group">
                 <div class="row">
                     <div class="col">
                         <label for="primeiro_nome">Nome:</label>
-                        <input id="primeiro_nome" class="form-control" type="text" name="primeiro_nome" placeholder="Nome"/>
+                        <input id="primeiro_nome" class="form-control" type="text" name="primeiroNome" placeholder="Nome" required="required"/>
                     </div>
                     <div class="col">
                         <label for="segundo_nome">Sobrenome:</label>
-                        <input id="segundo_nome" class="form-control" type="text" name="segundo_nome" placeholder="Sobrenome" />
+                        <input id="segundo_nome" class="form-control" type="text" name="sobrenome" placeholder="Sobrenome" required="required"/>
                     </div>
                 </div>
             </fieldset>
@@ -33,17 +32,17 @@
                 <div class="row">
                     <div class="col">
                         <label for="cep">CEP:</label>
-                        <input id="cep" class="form-control" type="text" name="cep" placeholder="CEP"/>
+                        <input id="cep" class="form-control" type="text" name="cep" placeholder="CEP" required="required"/>
                     </div>
                     <div class="col">
                         <label for="rua">Rua, avenida,...:</label>
-                        <input id="rua" class="form-control" type="text" name="rua" placeholder="Rua, avenida,..."/>
+                        <input id="rua" class="form-control" type="text" name="rua" placeholder="Rua, avenida,..." required="required"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <label for="numero">Número:</label>
-                        <input id="numero" class="form-control" type="text" name="numero" placeholder="Número"/>
+                        <input id="numero" class="form-control" type="text" name="numero" placeholder="Número" required="required"/>
                     </div>
                     <div class="col">
                         <label for="complemento">Complemento:</label>
@@ -54,7 +53,7 @@
 
             <fieldset class="form-group">
                 <label for="horario_de_trabalho">Horário de trabalho:</label>
-                <input id="horario_de_trabalho" class="form-control" type="time" name="horario_de_trabalho" placeholder="Horário de Trabalho"/>
+                <input id="horario_de_trabalho" class="form-control" type="time" name="horarioDeTrabalho" placeholder="Horário de Trabalho" required="required"/>
             </fieldset>
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
