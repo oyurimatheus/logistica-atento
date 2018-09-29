@@ -7,16 +7,22 @@ public class Endereco {
 
     private String cep;
 
-    private String nomeDaRua;
+    private String rua;
 
-    private int numero;
+    private String numero;
     private String complemento;
 
-    public Endereco(String cep, String nomeDaRua, int numero, String complemento) {
+    public Endereco(String cep, String nomeDaRua, String numero, String complemento) {
         this.cep = cep;
-        this.nomeDaRua = nomeDaRua;
+        this.rua = nomeDaRua;
         this.numero = numero;
         this.complemento = complemento;
+    }
+
+    Endereco() {}
+
+    public String enderecoFormatado() {
+        return rua + ", " + numero + " " + complemento;
     }
 
     public String getCep() {
@@ -27,19 +33,19 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public String getNomeDaRua() {
-        return nomeDaRua;
+    public String getRua() {
+        return rua;
     }
 
-    public void setNomeDaRua(String nomeDaRua) {
-        this.nomeDaRua = nomeDaRua;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

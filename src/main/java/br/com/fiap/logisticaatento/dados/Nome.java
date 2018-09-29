@@ -13,6 +13,12 @@ public class Nome {
         this.sobrenome = sobrenome;
     }
 
+    Nome() {}
+
+    public String nomeCopleto() {
+        return primeiroNome + " " + sobrenome;
+    }
+
     public String getPrimeiroNome() {
         return primeiroNome;
     }
