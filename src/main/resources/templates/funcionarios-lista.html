@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:hh="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <title>Cadastro de funcionários - Atento</title>
+</head>
+<body>
+    <header class="border rounded">
+        <h1 class="text-center ">Atento!</h1>
+    </header>
+    <main class="container">
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Horario de trabalho</th>
+            </thead>
+            <tr th:each="funcionario : ${funcionarios}">
+                <td th:text="${funcionario.id}">ID</td>
+                <td th:text="${funcionario.nomeCompleto()}">Nome</td>
+                <td th:text="${funcionario.enderecoSimplificado()}">Endereço</td>
+                <td th:text="${funcionario.horaDeTrabalho}">00:00</td>
+            </tr>
+        </table>
+
+    </main>
+    <footer class="container mt-5">
+        <p class="text-center text-secondary">2018 Todos os direitos reservados &copy;</p>
+    </footer>
+</body>
+</html>
