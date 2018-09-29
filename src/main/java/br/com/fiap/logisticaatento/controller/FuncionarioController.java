@@ -1,14 +1,19 @@
 package br.com.fiap.logisticaatento.controller;
 
+import br.com.fiap.logisticaatento.dto.FuncionarioForm;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.fiap.logisticaatento.modelo.Funcionario;
 import br.com.fiap.logisticaatento.repository.FuncionarioRepository;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/funcionario")
+@RequestMapping("/funcionarios")
 public class FuncionarioController {
 
     private FuncionarioRepository funcionarioRepository;
@@ -19,11 +24,24 @@ public class FuncionarioController {
 
     @GetMapping("/form")
     public String form() {
-        return "funcionario-form";
+        return "funcionarios-form";
     }
 
-    public String salva(Funcionario funcionario) {
+    @GetMapping
+    public String lista(Model model) {
+        List<Funcionario> funcionarios = funcionarioRepository.findAll();
+
+        model.addAttribute("funcionarios", funcionarios);
+
+        return "funcionarios-lista";
+    }
+
+    @PostMapping
+    public String salva(FuncionarioForm funcionarioForm) {
+        Funcionario funcionario = funcionarioForm.build();
+
         funcionarioRepository.save(funcionario);
-        return "funcionario-lista";
+
+        return "redirect:funcionarios";
     }
 }
