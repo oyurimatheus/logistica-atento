@@ -1,19 +1,20 @@
 package br.com.fiap.logisticaatento.modelo;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 import br.com.fiap.logisticaatento.dados.Nome;
 import br.com.fiap.logisticaatento.dados.Endereco;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 public class Funcionario {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     @Embedded
@@ -23,18 +24,27 @@ public class Funcionario {
     private Endereco endereco;
     private LocalTime horaDeTrabalho;
 
-    public Funcionario(long id, Nome nome, Endereco endereco, LocalTime horaDeTrabalho) {
-        this.id = id;
+    public Funcionario(Nome nome, Endereco endereco, LocalTime horaDeTrabalho) {
         this.nome = nome;
         this.endereco = endereco;
         this.horaDeTrabalho = horaDeTrabalho;
     }
 
-    public long getId() {
+    Funcionario() {}
+
+    public String nomeCompleto(){
+        return nome.getNomeCompleto();
+    }
+
+    public String enderecoSimplificado() {
+        return endereco.enderecoFormatado();
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
