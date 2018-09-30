@@ -7,9 +7,11 @@
     numero                  VARCHAR(5) NOT NULL,
     complemento             VARCHAR(10),
     cargo                   VARCHAR(20),
+    horario_entrada			    DATE,
+    horario_saida			      DATE,
     gasto_com_transporte    DECIMAL(10,2),
-    id_mt                   INTEGER,
-    id_fretado              INTEGER,
+    id_mt                   INTEGER NOT NULL,
+    id_fretado              INTEGER NOT NULL,
 
     CONSTRAINT pk_id_usuario PRIMARY KEY (id_usuario),
     CONSTRAINT ck_cargo_usuario CHECK( cargo IN ('candidato', 'funcionario'))
@@ -26,7 +28,7 @@ CREATE TABLE meios_de_transporte(
 CREATE TABLE fretados(
     id_fretado          INTEGER,
     horario_de_partida  DATE NOT NULL,
-    capacidade          NUMERIC(2) NOT NULL,
+    capacidade          INTEGER(2) NOT NULL,
 
     CONSTRAINT pk_id_fretado PRIMARY KEY (id_fretado)
 );
@@ -41,23 +43,28 @@ CREATE TABLE rotas(
 );
 
 CREATE TABLE fretados_rotas(
-    id_fretado INTEGER,
-    id_rota    INTEGER,
+    id_fretado INTEGER NOT NULL,
+    id_rota    INTEGER NOT NULL,
 
     CONSTRAINT pk_id_rota PRIMARY KEY (id_fretado, id_rota)
 );
 
 ALTER TABLE usuarios
-ADD CONSTRAINT fk_id_mt
+ADD CONSTRAINT fk_id_mt_usuarios
    FOREIGN KEY (id_mt)
    REFERENCES meios_de_transporte (id_mt);
 
-ALTER TABLE fretados_rotas
-ADD CONSTRAINT fk_id_fretado
+ALTER TABLE usuarios
+ADD CONSTRAINT fk_id_fretado_usuarios
    FOREIGN KEY (id_fretado)
    REFERENCES fretados (id_fretado);
 
 ALTER TABLE fretados_rotas
-ADD CONSTRAINT fk_id_rota
+ADD CONSTRAINT fk_id_fretado_fretados_rotas
+   FOREIGN KEY (id_fretado)
+   REFERENCES fretados (id_fretado);
+
+ALTER TABLE fretados_rotas
+ADD CONSTRAINT fk_id_rota_fretados_rotas
    FOREIGN KEY (id_rota)
    REFERENCES rotas (id_rota);
