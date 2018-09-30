@@ -1,11 +1,14 @@
 package br.com.fiap.logisticaatento.dados;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Nome {
 
+    @Column(name = "primeiro_nome")
     private String primeiroNome;
+
     private String sobrenome;
 
     public Nome(String primeiroNome, String sobrenome) {
