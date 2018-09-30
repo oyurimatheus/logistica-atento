@@ -1,7 +1,7 @@
 package br.com.fiap.logisticaatento.modelo;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 import br.com.fiap.logisticaatento.dados.Nome;
 import br.com.fiap.logisticaatento.dados.Endereco;
@@ -10,24 +10,49 @@ import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+@Table(name = "usuarios")
 @Entity
 public class Funcionario {
 
+    @Column(name = "id_usuario")
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Embedded
     private Nome nome;
 
     @Embedded
     private Endereco endereco;
-    private LocalTime horaDeTrabalho;
 
-    public Funcionario(Nome nome, Endereco endereco, LocalTime horaDeTrabalho) {
+    @Column(name = "horario_entrada")
+    private LocalTime horaDeEntrada;
+
+    @Column(name = "horario_saida")
+    private LocalTime horaDeSaida;
+
+    private String cargo;
+
+    @Column(name = "gasto_com_transporte")
+    private BigDecimal gastoComTransporte;
+
+    @ManyToOne
+    @JoinColumn(name = "id_mt")
+    private MeioDeTransporte meioDeTransporte;
+
+    @ManyToOne
+    @JoinColumn(name = "id_fretado")
+    private Fretado fretado;
+
+
+    public Funcionario(Nome nome, Endereco endereco, LocalTime horaDeEntrada, LocalTime horaDeSaida, BigDecimal gastoComTransporte, MeioDeTransporte meioDeTransporte, Fretado fretado) {
         this.nome = nome;
         this.endereco = endereco;
-        this.horaDeTrabalho = horaDeTrabalho;
+        this.horaDeEntrada = horaDeEntrada;
+        this.horaDeSaida = horaDeSaida;
+        this.gastoComTransporte = gastoComTransporte;
+        this.meioDeTransporte = meioDeTransporte;
+        this.fretado = fretado;
     }
 
     Funcionario() {}
@@ -40,35 +65,35 @@ public class Funcionario {
         return endereco.enderecoFormatado();
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Nome getNome() {
         return nome;
     }
 
-    public void setNome(Nome nome) {
-        this.nome = nome;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public LocalTime getHoraDeEntrada() {
+        return horaDeEntrada;
     }
 
-    public LocalTime getHoraDeTrabalho() {
-        return horaDeTrabalho;
+    public LocalTime getHoraDeSaida() {
+        return horaDeSaida;
     }
 
-    public void setHoraDeTrabalho(LocalTime horaDeTrabalho) {
-        this.horaDeTrabalho = horaDeTrabalho;
+    public BigDecimal getGastoComTransporte() {
+        return gastoComTransporte;
+    }
+
+    public MeioDeTransporte getMeioDeTransporte() {
+        return meioDeTransporte;
+    }
+
+    public Fretado getFretado() {
+        return fretado;
     }
 }
