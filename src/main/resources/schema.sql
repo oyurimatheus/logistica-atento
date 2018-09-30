@@ -1,4 +1,4 @@
-    CREATE TABLE usuarios(
+CREATE TABLE usuarios(
     id_usuario              INTEGER,
     primeiro_nome           VARCHAR(50) NOT NULL,
     sobrenome               VARCHAR(50) NOT NULL,
@@ -7,8 +7,8 @@
     numero                  VARCHAR(5) NOT NULL,
     complemento             VARCHAR(10),
     cargo                   VARCHAR(20),
-    horario_entrada			    DATE,
-    horario_saida			      DATE,
+    horario_entrada			    TIME,
+    horario_saida			      TIME,
     gasto_com_transporte    DECIMAL(10,2),
     id_mt                   INTEGER NOT NULL,
     id_fretado              INTEGER NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE meios_de_transporte(
 
 CREATE TABLE fretados(
     id_fretado          INTEGER,
-    horario_de_partida  DATE NOT NULL,
+    horario_de_partida  TIME NOT NULL,
     capacidade          INTEGER(2) NOT NULL,
 
     CONSTRAINT pk_id_fretado PRIMARY KEY (id_fretado)
@@ -36,11 +36,12 @@ CREATE TABLE fretados(
 CREATE TABLE rotas(
     id_rota         INTEGER,
     custo           DECIMAL(10,2) NOT NULL,
-    tempo_decorrido DATE NOT NULL,
+    tempo_decorrido TIME NOT NULL,
     distancia       INTEGER NOT NULL,
 
     CONSTRAINT pk_id_rota PRIMARY KEY (id_rota)
 );
+
 
 CREATE TABLE fretados_rotas(
     id_fretado INTEGER NOT NULL,
