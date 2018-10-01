@@ -47,7 +47,7 @@ CREATE TABLE fretados_rotas(
     id_fretado INTEGER NOT NULL,
     id_rota    INTEGER NOT NULL,
 
-    CONSTRAINT pk_id_rota PRIMARY KEY (id_fretado, id_rota)
+    CONSTRAINT pk_id_fretado_rota PRIMARY KEY (id_fretado, id_rota)
 );
 
 ALTER TABLE usuarios
