@@ -1,0 +1,47 @@
+funcionarios-form.html<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <title>Cadastro de funcionários - Atento</title>
+</head>
+<body>
+    <header class="border rounded">
+        <h1 class="text-center ">Atento!</h1>
+    </header>
+    <main class="container">
+        <form action="/rotas" method="post" class="border rounded p-5 mt-3">
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label for="custo">Nome:</label>
+                        <input id="custo" class="form-control" type="number" name="nome" placeholder="R$... custo" required="required"/>
+                    </div>
+                    <div class="col">
+                        <label for="tempoDecorrido">Tempo decorrido:</label>
+                        <input id="tempoDecorrido" class="form-control" type="number" name="custo" placeholder="Tempo decorrido" required="required"/>
+                    </div>
+                </div>
+            </fieldset>
+
+
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label for="distancia">Distância:</label>
+                        <input id="distancia" class="form-control" type="text" name="distancia" placeholder="Distância" required="required"/>
+                    </div>
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    </main>
+    <footer class="container mt-5">
+        <p class="text-center text-secondary">2018 Todos os direitos reservados &copy;</p>
+    </footer>
+</body>
+</html>
