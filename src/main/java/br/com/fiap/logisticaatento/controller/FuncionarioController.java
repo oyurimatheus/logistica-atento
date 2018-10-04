@@ -1,6 +1,10 @@
 package br.com.fiap.logisticaatento.controller;
 
 import br.com.fiap.logisticaatento.dto.FuncionarioForm;
+import br.com.fiap.logisticaatento.modelo.Fretado;
+import br.com.fiap.logisticaatento.modelo.MeioDeTransporte;
+import br.com.fiap.logisticaatento.repository.FretadoRepository;
+import br.com.fiap.logisticaatento.repository.MeioDeTransporteRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +21,23 @@ import java.util.List;
 public class FuncionarioController {
 
     private FuncionarioRepository funcionarioRepository;
+    private MeioDeTransporteRepository meioDeTransporteRepository;
+    private FretadoRepository fretadoRepository;
 
-    public FuncionarioController(FuncionarioRepository funcionarioRepository) {
+    public FuncionarioController(FuncionarioRepository funcionarioRepository, MeioDeTransporteRepository meioDeTransporteRepository, FretadoRepository fretadoRepository) {
         this.funcionarioRepository = funcionarioRepository;
+        this.meioDeTransporteRepository = meioDeTransporteRepository;
+        this.fretadoRepository = fretadoRepository;
     }
 
     @GetMapping("/form")
-    public String form() {
+    public String form(Model model) {
+        List<MeioDeTransporte> meiosDeTransportes = meioDeTransporteRepository.findAll();
+        List<Fretado> fretados = fretadoRepository.findAll();
+
+        model.addAttribute("meiosDeTransporte", meiosDeTransportes);
+        model.addAttribute("fretados", fretados);
+
         return "funcionarios-form";
     }
 

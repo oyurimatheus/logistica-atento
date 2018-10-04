@@ -7,19 +7,19 @@
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
-    <title>Cadastro de funcionários - Atento</title>
+    <title>Cadastro de fretados - Atento</title>
 </head>
 <body>
     <header class="border rounded">
         <h1 class="text-center ">Atento!</h1>
     </header>
     <main class="container">
-        <form action="/funcionarios" method="post" class="border rounded p-5 mt-3">
+        <form action="/fretados" method="post" class="border rounded p-5 mt-3">
             <fieldset class="form-group">
                 <div class="row">
                     <div class="col">
                         <label for="horarioDePartida">Horário de partida:</label>
-                        <input id="horarioDePartida" class="form-control" type="text" name="horarioDePartida" placeholder="Horário de partida" required="required"/>
+                        <input id="horarioDePartida" class="form-control" type="time" name="horarioDePartida" placeholder="Horário de partida" required="required"/>
                     </div>
                     <div class="col">
                         <label for="capacidade">Capacidade:</label>

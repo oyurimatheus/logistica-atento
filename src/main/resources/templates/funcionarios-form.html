@@ -52,9 +52,40 @@
             </fieldset>
 
             <fieldset class="form-group">
-                <label for="horario_de_trabalho">Horário de trabalho:</label>
-                <input id="horario_de_trabalho" class="form-control" type="time" name="horarioDeTrabalho" placeholder="Horário de Trabalho" required="required"/>
+                <div class="row">
+                    <div class="col">
+                        <label for="horario_de_entrada">Horário de entrada:</label>
+                        <input id="horario_de_entrada" class="form-control" type="time" name="horarioDeEntrada" placeholder="Horário de Entrada" required="required"/>
+
+                    </div>
+                    <div class="col">
+                        <label for="horario_de_saida">Horário de saída:</label>
+                        <input id="horario_de_saida" class="form-control" type="time" name="horarioDeSaida" placeholder="Horário de Entrada" required="required"/>
+                    </div>
+                </div>
             </fieldset>
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label for="gasto">Gasto com transporte:</label>
+                        <input id="gasto" class="form-control" type="number" name="gastoComTransporte" placeholder="Gasto com transporte" required="required"/>
+
+                    </div>
+                    <div class="col">
+                        <label for="meioDeTransporte">Meio de transporte:</label>
+                        <select id="meioDeTransporte" class="form-control" name="meioDeTransporte" required="required">
+                            <option th:each="m : ${meiosDeTransporte}" th:value="${m.id}" th:text="${m.nome}">-</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="fretado">Fretado:</label>
+                        <select id="fretado" class="form-control" name="fretado" required="required">
+                            <option th:each="f : ${fretados}" th:value="${f.id}" th:text="${f.id}">-</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
     </main>

@@ -25,6 +25,8 @@ public class MeioDeTransporte {
         this.custo = custo;
     }
 
+    MeioDeTransporte() {}
+
     public Integer getId() {
         return id;
     }

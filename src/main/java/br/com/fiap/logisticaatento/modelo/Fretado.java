@@ -48,4 +48,8 @@ public class Fretado {
     public Integer getCapacidade() {
         return capacidade;
     }
+
+    public List<Rota> getRotas() {
+        return rotas;
+    }
 }

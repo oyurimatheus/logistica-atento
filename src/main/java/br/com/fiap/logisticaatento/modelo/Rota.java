@@ -36,6 +36,10 @@ public class Rota {
 
     Rota() {}
 
+    public String getCustoFormatado() {
+        return custo.toString().replace(".", ",");
+    }
+
     public Integer getId() {
         return id;
     }

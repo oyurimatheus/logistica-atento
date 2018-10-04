@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
-    <title>Cadastro de funcionários - Atento</title>
+    <title>Lista de funcionários - Atento</title>
 </head>
 <body>
     <header class="border rounded">
@@ -20,13 +20,19 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Endereço</th>
-                <th>Horario de trabalho</th>
+                <th>Horario de entrada</th>
+                <th>Horario de saída</th>
+                <th>Fretado?</th>
+                <th>Custo com transporte</th>
             </thead>
             <tr th:each="funcionario : ${funcionarios}">
                 <td th:text="${funcionario.id}">ID</td>
                 <td th:text="${funcionario.nomeCompleto()}">Nome</td>
                 <td th:text="${funcionario.enderecoSimplificado()}">Endereço</td>
                 <td th:text="${funcionario.horaDeEntrada}">00:00</td>
+                <td th:text="${funcionario.horaDeSaida}">00:00</td>
+                <td th:text="${funcionario.fretado.id}">0</td>
+                <td th:text="R$ ${funcionario.gastoComTransporte}">0</td>
             </tr>
         </table>
 

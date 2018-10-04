@@ -2,9 +2,9 @@ package br.com.fiap.logisticaatento.dto;
 
 import br.com.fiap.logisticaatento.dados.Endereco;
 import br.com.fiap.logisticaatento.dados.Nome;
-import br.com.fiap.logisticaatento.modelo.Fretado;
 import br.com.fiap.logisticaatento.modelo.Funcionario;
-import br.com.fiap.logisticaatento.modelo.MeioDeTransporte;
+import br.com.fiap.logisticaatento.repository.FretadoRepository;
+import br.com.fiap.logisticaatento.repository.MeioDeTransporteRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalTime;
@@ -20,11 +20,14 @@ public class FuncionarioForm {
     private final LocalTime horarioDeTrabalho;
     private LocalTime horaDeSaida;
     private BigDecimal gastoComTransporte;
-    private MeioDeTransporte meioDeTransporte;
-    private Fretado fretado;
+    private Long meioDeTransporte;
+    private Long fretado;
+
+    private MeioDeTransporteRepository meioDeTransporteRepository;
+    private FretadoRepository fretadoRepository;
 
 
-    public FuncionarioForm(String primeiroNome, String sobrenome, String cep, String rua, String numero, String complemento, LocalTime horarioDeTrabalho, LocalTime horaDeSaida, BigDecimal gastoComTransporte, MeioDeTransporte meioDeTransporte, Fretado fretado) {
+    public FuncionarioForm(String primeiroNome, String sobrenome, String cep, String rua, String numero, String complemento, LocalTime horarioDeTrabalho, LocalTime horaDeSaida, BigDecimal gastoComTransporte, Long meioDeTransporte, Long fretado, MeioDeTransporteRepository meioDeTransporteRepository, FretadoRepository fretadoRepository) {
         this.primeiroNome = primeiroNome;
         this.sobrenome = sobrenome;
         this.cep = cep;
@@ -36,12 +39,16 @@ public class FuncionarioForm {
         this.gastoComTransporte = gastoComTransporte;
         this.meioDeTransporte = meioDeTransporte;
         this.fretado = fretado;
+        this.meioDeTransporteRepository = meioDeTransporteRepository;
+        this.fretadoRepository = fretadoRepository;
     }
 
     public Funcionario build() {
         return new Funcionario(new Nome(primeiroNome, sobrenome),
                                new Endereco(cep, rua, numero, complemento),
-                               horarioDeTrabalho, horaDeSaida, gastoComTransporte, meioDeTransporte, fretado);
+                               horarioDeTrabalho, horaDeSaida, gastoComTransporte,
+                               meioDeTransporteRepository.findById(meioDeTransporte).get(),
+                               fretadoRepository.findById(fretado).get());
     }
 
     public String getPrimeiroNome() {
