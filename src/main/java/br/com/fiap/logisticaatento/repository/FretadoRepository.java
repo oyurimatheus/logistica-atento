@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FretadoRepository extends JpaRepository<Fretado, Long> {
+public interface FretadoRepository extends JpaRepository<Fretado, Integer> {
 
 }

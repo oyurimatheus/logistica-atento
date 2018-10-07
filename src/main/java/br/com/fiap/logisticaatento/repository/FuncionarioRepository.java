@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.fiap.logisticaatento.modelo.Funcionario;
 
 @Repository
-public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
+public interface FuncionarioRepository extends JpaRepository<Funcionario, Integer> {
 
 }

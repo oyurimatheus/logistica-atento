@@ -3,6 +3,7 @@ package br.com.fiap.logisticaatento.controller;
 import br.com.fiap.logisticaatento.modelo.MeioDeTransporte;
 import br.com.fiap.logisticaatento.repository.MeioDeTransporteRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,14 @@ public class MeioDeTransporteController {
         meioDeTransporteRepository.save(meioDeTransporte);
 
         return "redirect:meio-de-transporte";
+    }
+
+    @GetMapping
+    public String lista(Model model) {
+
+        model.addAttribute("meiosDeTransporte", meioDeTransporteRepository.findAll());
+
+        return "meio-de-transporte-lista";
     }
 
 

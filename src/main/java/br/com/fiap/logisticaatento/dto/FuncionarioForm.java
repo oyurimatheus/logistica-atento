@@ -11,42 +11,37 @@ import java.time.LocalTime;
 
 public class FuncionarioForm {
 
-    private final String primeiroNome;
-    private final String sobrenome;
-    private final String cep;
-    private final String rua;
-    private final String numero;
-    private final String complemento;
-    private final LocalTime horarioDeTrabalho;
-    private LocalTime horaDeSaida;
+    private String primeiroNome;
+    private String sobrenome;
+    private String cep;
+    private String rua;
+    private String numero;
+    private String complemento;
+    private LocalTime horarioDeEntrada;
+    private LocalTime horarioDeSaida;
     private BigDecimal gastoComTransporte;
-    private Long meioDeTransporte;
-    private Long fretado;
+    private Integer meioDeTransporte;
+    private Integer fretado;
 
-    private MeioDeTransporteRepository meioDeTransporteRepository;
-    private FretadoRepository fretadoRepository;
-
-
-    public FuncionarioForm(String primeiroNome, String sobrenome, String cep, String rua, String numero, String complemento, LocalTime horarioDeTrabalho, LocalTime horaDeSaida, BigDecimal gastoComTransporte, Long meioDeTransporte, Long fretado, MeioDeTransporteRepository meioDeTransporteRepository, FretadoRepository fretadoRepository) {
+    public FuncionarioForm(String primeiroNome, String sobrenome, String cep, String rua, String numero, String complemento, LocalTime horarioDeEntrada, LocalTime horarioDeSaida, BigDecimal gastoComTransporte, Integer meioDeTransporte, Integer fretado) {
         this.primeiroNome = primeiroNome;
         this.sobrenome = sobrenome;
         this.cep = cep;
         this.rua = rua;
         this.numero = numero;
         this.complemento = complemento;
-        this.horarioDeTrabalho = horarioDeTrabalho;
-        this.horaDeSaida = horaDeSaida;
+        this.horarioDeEntrada = horarioDeEntrada;
+        this.horarioDeSaida = horarioDeSaida;
         this.gastoComTransporte = gastoComTransporte;
         this.meioDeTransporte = meioDeTransporte;
         this.fretado = fretado;
-        this.meioDeTransporteRepository = meioDeTransporteRepository;
-        this.fretadoRepository = fretadoRepository;
     }
 
-    public Funcionario build() {
+    public Funcionario build(MeioDeTransporteRepository meioDeTransporteRepository, FretadoRepository fretadoRepository) {
+
         return new Funcionario(new Nome(primeiroNome, sobrenome),
                                new Endereco(cep, rua, numero, complemento),
-                               horarioDeTrabalho, horaDeSaida, gastoComTransporte,
+                horarioDeEntrada, horarioDeSaida, gastoComTransporte,
                                meioDeTransporteRepository.findById(meioDeTransporte).get(),
                                fretadoRepository.findById(fretado).get());
     }
@@ -76,6 +71,6 @@ public class FuncionarioForm {
     }
 
     public LocalTime getHoraDeTrabalho() {
-        return horarioDeTrabalho;
+        return horarioDeEntrada;
     }
 }

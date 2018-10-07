@@ -17,13 +17,15 @@
 
         <table class="table table-striped table-hover">
             <thead>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Endereço</th>
-                <th>Horario de entrada</th>
-                <th>Horario de saída</th>
-                <th>Fretado?</th>
-                <th>Custo com transporte</th>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Horario de entrada</th>
+                    <th>Horario de saída</th>
+                    <th>Fretado?</th>
+                    <th>Custo com transporte</th>
+                </tr>
             </thead>
             <tr th:each="funcionario : ${funcionarios}">
                 <td th:text="${funcionario.id}">ID</td>
@@ -32,7 +34,7 @@
                 <td th:text="${funcionario.horaDeEntrada}">00:00</td>
                 <td th:text="${funcionario.horaDeSaida}">00:00</td>
                 <td th:text="${funcionario.fretado.id}">0</td>
-                <td th:text="R$ ${funcionario.gastoComTransporte}">0</td>
+                <td th:text="'R$' + ${funcionario.gastoComTransporte}">0</td>
             </tr>
         </table>
 

@@ -44,7 +44,7 @@ public class FuncionarioController {
     @GetMapping
     public String lista(Model model) {
         List<Funcionario> funcionarios = funcionarioRepository.findAll();
-
+        System.out.println(funcionarios);
         model.addAttribute("funcionarios", funcionarios);
 
         return "funcionarios-lista";
@@ -52,7 +52,7 @@ public class FuncionarioController {
 
     @PostMapping
     public String salva(FuncionarioForm funcionarioForm) {
-        Funcionario funcionario = funcionarioForm.build();
+        Funcionario funcionario = funcionarioForm.build(meioDeTransporteRepository, fretadoRepository);
 
         funcionarioRepository.save(funcionario);
 
