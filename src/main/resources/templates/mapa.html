@@ -25,8 +25,8 @@
                                     <option th:each="fretado: ${fretados}" th:value="${fretado.id}" th:text="${fretado.id}">1</option>
                                 </select>
                                 <label for="funcionario">Funcionario</label>
-                                <select id="funcionario">
-                                    <option th:each="funcionario: ${funcionarios}" th:value="${funcionario.id}" th:text="${funcionario.nomeCompleto}">Nome</option>
+                                <select id="funcionario" class="form-control">
+                                    <option th:each="funcionario: ${funcionarios}" th:value="${funcionario.id}" th:text="${funcionario.nomeCompleto()}">Nome</option>
                                 </select>
                             </div>
                         </div>
